@@ -42,3 +42,4 @@ namespace MyPokemonBlazorApp.Model
         public List<Trainer> Trainers { get; set; }
     }
 }
+// comment
