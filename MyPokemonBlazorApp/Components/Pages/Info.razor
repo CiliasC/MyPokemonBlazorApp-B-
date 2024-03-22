@@ -2,29 +2,28 @@
 @inject DatabaseContext DbContext
 @inject PokemonImageGrabber ImageGrabber
 
+
 <h3>Info</h3>
 
 @if (pokemon is not null)
 {
     <p>@pokemon?.Name</p>
-    <p>@pokemon?.HP</p>
-
-    <img src="@imageUrl" onerror="this.onerror=null;this.src='/img/notfound.png';" class="img-fluid img-thumbnail rounded-start" alt="@pokemon?.Name" />
-
+    <img src="@imageUrl" onerror="this.onerror=null;this.src='/img/notfound.png';" class="img-fluid img-thumbnail rounded-start" alt="@pokemon.Name" />
 }
 else
 {
         <p>No pokemon found for that Id</p>
 }
 
-
+   
 @code {
     [Parameter]
     public int Id { get; set; }
 
-    private Pokemon? pokemon;
-    private string? imageUrl { get; set; }
 
+    private Pokemon? pokemon;
+
+    private string? imageUrl { get; set; }
     protected override void OnInitialized()
     {
         pokemon = DbContext.Pokemons.SingleOrDefault(p => p.Id == Id);
@@ -32,9 +31,8 @@ else
     }
 }
 
- 
-<h5><span class="badge text-bg-primary">@pokemon.Type</span></h5><h5><span class="badge text-bg-success">@pokemon.Generation</span></h5>
-
+ <h3><span class="badge rounded-pill text-bg-primary">@pokemon.Type</span></h3>    
+ <h3><span class="badge rounded-pill text-bg-warning">@pokemon.Generation</span></h3>
 
 <div class="progress" role="progressbar" aria-label="Success example" style="height: 30px" aria-valuenow="@pokemon?.HP" aria-valuemin="0" aria-valuemax="255">
     <div class="progress-bar bg-success" style="width: @(pokemon?.HP*100/255)%">HP</div>
@@ -46,7 +44,13 @@ else
     <div class="progress-bar bg-warning text-dark" style="width: @(pokemon?.Defence*100/255)%">Defence</div>
 </div>
 <div class="progress" role="progressbar" aria-label="Danger example" style="height: 30px"
-    aria-valuenow="@pokemon?.Speed" aria-valuemin="0" aria-valuemax="255">
+     aria-valuenow="@pokemon?.Speed" aria-valuemin="0" aria-valuemax="255">
     <div class="progress-bar bg-danger" style="width: @(pokemon?.Speed*100/255)%">Speed</div>
 </div>
+
+
+
+
+
+ 
 
