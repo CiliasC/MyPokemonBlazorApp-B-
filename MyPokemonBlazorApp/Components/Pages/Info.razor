@@ -30,10 +30,22 @@ else
         imageUrl = ImageGrabber.GetImageUrl(pokemon);
     }
 }
-
- <h3><span class="badge rounded-pill text-bg-primary">@pokemon.Type</span></h3>    
- <h3><span class="badge rounded-pill text-bg-warning">@pokemon.Generation</span></h3>
-
+   <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="card-body bg-light">
+                <h5 class="card-title">@pokemon.Name</h5>
+                </div>
+                </div>
+                </div>
+                <p>
+                    <span class="badge rounded-pill bg-primary">@pokemon.Type</span>&nbsp;
+                    <span class="badge rounded-pill bg-success">Generation @pokemon.Generation</span>&nbsp;
+                    @if (pokemon.Legendary)
+                    {
+                        <span class="badge rounded-pill bg-warning">Legendary</span>
+                    }
+                    
+                </p>
 <div class="progress" role="progressbar" aria-label="Success example" style="height: 30px" aria-valuenow="@pokemon?.HP" aria-valuemin="0" aria-valuemax="255">
     <div class="progress-bar bg-success" style="width: @(pokemon?.HP*100/255)%">HP</div>
 </div>

@@ -78,7 +78,7 @@
 
     private async Task Delete(Trainer trainer)
     {
-        DbContext.Pokemons.Remove(trainers);
+        DbContext.Trainers.Remove(trainer);
         await DbContext.SaveChangesAsync();
         await Refresh();
     }
